@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HALF-PROJECT</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #38bdf8;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #64748b;
+      margin-bottom: 32px;
+      font-size: 0.9rem;
+    }
+
+    .status-bar {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 10px 20px;
+      margin-bottom: 24px;
+      font-size: 0.85rem;
+      color: #94a3b8;
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    .status-bar.connected { border-color: #22c55e; color: #22c55e; }
+    .status-bar.error     { border-color: #ef4444; color: #ef4444; }
+
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 24px;
+      width: 100%;
+      max-width: 500px;
+      margin-bottom: 24px;
+    }
+
+    .card h2 {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    input, textarea {
+      width: 100%;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      color: #e2e8f0;
+      padding: 12px;
+      font-size: 1rem;
+      margin-bottom: 12px;
+      outline: none;
+      font-family: inherit;
+    }
+
+    input:focus, textarea:focus { border-color: #38bdf8; }
+    textarea { height: 100px; resize: vertical; }
+
+    button {
+      width: 100%;
+      background: #38bdf8;
+      color: #0f172a;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button:hover    { background: #0ea5e9; }
+    button:disabled { background: #334155; color: #64748b; cursor: not-allowed; }
+
+    .note-item {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 12px;
+      width: 100%;
+      max-width: 500px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .note-item h3   { color: #38bdf8; margin-bottom: 6px; }
+    .note-item p    { color: #94a3b8; font-size: 0.9rem; line-height: 1.5; }
+    .note-item small{ font-size: 0.75rem; color: #475569; margin-top: 8px; display:block; }
+
+    .empty {
+      text-align: center;
+      color: #475569;
+      padding: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📋 HALF-PROJECT</h1>
+  <p class="subtitle">Firebase Demo — Notes App</p>
+
+  <!-- This shows if Firebase is connected or not -->
+  <div class="status-bar" id="statusBar">⏳ Connecting to Firebase...</div>
+
+  <!-- Form to add a note -->
+  <div class="card">
+    <h2>Add a Note</h2>
+    <input  type="text" id="noteTitle" placeholder="Note title..." />
+    <textarea id="noteBody" placeholder="Write your note here..."></textarea>
+    <button id="saveBtn" disabled>Save to Firebase</button>
+  </div>
+
+  <!-- Notes will appear here -->
+  <div id="notesList">
+    <div class="empty">Loading notes...</div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+
+</body>
+</html>
